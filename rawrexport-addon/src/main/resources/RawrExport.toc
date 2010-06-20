@@ -1,0 +1,9 @@
+## Interface: 30300
+## Title: RawrExport
+## Notes: Writes a dataset of all available gear in your inventory
+## Author: delphyne
+## Version: 2.0
+## SavedVariables: RawrExportOptions
+## SavedVariablesPerCharacter: RawrExportAvailableItems
+
+RawrExport.lua
