@@ -5,7 +5,7 @@ class Main {
         if (args.size() == 2) {
             execute(args[0], args[1])            
         } else if (args.size() > 0) {
-            println("usage: ${Main.class.name} <RawrExport.lua> <Character.xml> <outfile.xml>")
+            println("usage: ${Main.class.name} <RawrExport.lua> <Character.xml>")
         } else {
             new Interface()
         }

@@ -1,18 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.dyndns.delphyne</groupId>
-	<artifactId>rawrexport</artifactId>
-	<version>1.1.0-SNAPSHOT</version>
-	<packaging>pom</packaging>
+    <groupId>org.dyndns.delphyne</groupId>
+    <artifactId>rawrexport</artifactId>
+    <version>1.1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 	
-	<name>Rawr Export</name>
+    <name>Rawr Export</name>
 
-	<modules>
-		<module>rawrexport-lib</module>
-		<module>rawrexport-addon</module>
-		<module>rawrexport-swing</module>
-  </modules>
+    <properties>
+        <groovy.version>1.7.3</groovy.version>
+        <java.version>1.6</java.version>
+    </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.gmaven</groupId>
+                    <artifactId>gmaven-plugin</artifactId>
+                    <version>1.2</version>
+                    <configuration>
+                        <providerSelection>1.7</providerSelection>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.codehaus.gmaven.runtime</groupId>
+                            <artifactId>gmaven-runtime-1.7</artifactId>
+                            <version>1.2</version>
+                            <exclusions>
+                                <exclusion>
+                                    <groupId>org.codehaus.groovy</groupId>
+                                    <artifactId>groovy-all</artifactId>
+                                </exclusion>
+                            </exclusions>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.codehaus.groovy</groupId>
+                            <artifactId>groovy</artifactId>
+                            <version>${groovy.version}</version>
+                        </dependency>
+                    </dependencies>
+                    <executions>
+                        <execution>
+                            <goals>
+                            <!--<goal>generateStubs</goal>-->
+                                <goal>compile</goal>
+                            <!--<goal>generateTestStubs</goal>-->
+                                <goal>testCompile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <modules>
+        <module>rawrexport-lib</module>
+        <module>rawrexport-addon</module>
+        <module>rawrexport-swing</module>
+        <module>rawrexport-gae</module>
+    </modules>
 </project>
