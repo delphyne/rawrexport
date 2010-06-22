@@ -4,3 +4,4 @@ target
 .project
 .classpath
 META-INF/MANIFEST.MF
+.DS_Store

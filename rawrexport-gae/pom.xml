@@ -13,7 +13,7 @@
     <artifactId>rawrexport-gae</artifactId>
     <packaging>war</packaging>
 
-    <name>Rawr Data Google App Engine Interface</name>
+    <name>Rawr Data Web Interface</name>
     <description>
         A web interface to the Rawr Data Library to merge a character's 
         inventory into a Rawr character XML file.
@@ -37,12 +37,18 @@
     </build>
     
     <dependencies>
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-api-1.0-sdk</artifactId>
-            <version>${gae.version}</version>
-            <scope>compile</scope>
-        </dependency>
+    	<dependency>
+    		<groupId>org.dyndns.delphyne</groupId>
+    		<artifactId>rawrexport-lib</artifactId>
+    		<version>${pom.version}</version>
+    		<scope>compile</scope>
+    	</dependency>
+    	<dependency>
+    		<groupId>commons-fileupload</groupId>
+    		<artifactId>commons-fileupload</artifactId>
+    		<version>1.2.1</version>
+    		<scope>compile</scope>
+    	</dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy</artifactId>
