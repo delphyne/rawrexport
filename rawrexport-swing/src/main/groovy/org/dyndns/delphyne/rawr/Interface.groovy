@@ -2,17 +2,17 @@ package org.dyndns.delphyne.rawr
 
 import groovy.beans.Bindable
 import groovy.swing.SwingBuilder
-import java.awt.*
+import java.awt.FileDialog
 import javax.swing.*
 import javax.swing.filechooser.*
 
 class Interface {
     def swing = new SwingBuilder()
 	
-    def model = new FileNamesModel()
+    FileNamesModel model = new FileNamesModel()
 	
     def winprop = System.getenv("PROGRAMFILES")
-    def luadirs = [new File("$winprop/World of Warcraft/"), new File("/Applications/")]
+    List<File> luadirs = [new File("$winprop/World of Warcraft/"), new File("/Applications/")]
 	
     public Interface() {
         def fileDialog = new FileDialog(null)
@@ -50,7 +50,7 @@ class Interface {
 					
                     hglue()
                     button("Go!", actionPerformed: {
-                            Main.execute(model.savedVariables, model.rawrXml)
+                            Main.execute(new File(model.savedVariables).text, new File(model.rawrXml).text, model.rawrXml)
                         })
                     hglue()
                 }

@@ -5,21 +5,21 @@ import java.io.PrintWriter;
 import groovy.util.XmlNodePrinter;
 
 class RawrXml {
-    def xmlFile
+    String xml
     def originalXml
     
     def merge(def data) {
         def knownItems = data.clone()
         
-        originalXml = new XmlParser().parse(new File(xmlFile))
+        originalXml = new XmlParser().parseText(xml)
 
         originalXml.AvailableItems.each { node ->
             def item = node.text() as int
             knownItems.remove(item)
         }
         
-        knownItems.each { item ->
-            originalXml.appendNode("AvailableItems", item.key)
+        knownItems.each { k,v ->
+            originalXml.appendNode("AvailableItems", k)
         }
         
         return toString()

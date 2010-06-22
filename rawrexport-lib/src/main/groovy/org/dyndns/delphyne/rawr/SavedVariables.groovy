@@ -1,9 +1,9 @@
 package org.dyndns.delphyne.rawr
 
 class SavedVariables {
-	def varsFile
+	String lua
 	def parse() {
-		def text = new File(varsFile).text.replaceAll(~/\s|\[|\]/, "")
+		def text = lua.replaceAll(~/\s|\[|\]/, "")
 		text = text.substring(0,text.indexOf("=")+1) + text.substring(text.indexOf("=")+1).replaceAll(~/=/,":")
 		text = text.replaceAll(~/\{/, "[")
 		text = text.replaceAll(~/\}/, "]")
